@@ -1,0 +1,4 @@
+baseURL: "https://bkci.net"
+languageCode: "en-us"
+title: "BKCI"
+theme: hugo-profile
