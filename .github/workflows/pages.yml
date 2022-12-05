@@ -32,7 +32,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: rm -rf public.zip public && hugo && zip public.zip public/
+        run: rm -rf outputs/ public/ && hugo && zip public.zip public/ && mkdir outputs && mv public.zip outputs
       - name: Upload to COS
         uses: TencentCloud/cos-action@v1
         with:
@@ -40,7 +40,7 @@ jobs:
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: public.zip
+          local_path: outputs/public.zip
           remote_path: ./
           clean: true
           accelerate: true
