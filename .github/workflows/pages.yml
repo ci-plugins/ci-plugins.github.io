@@ -40,7 +40,7 @@ jobs:
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: outputs/public.zip
+          local_path: outputs
           remote_path: ./
           clean: true
           accelerate: true
