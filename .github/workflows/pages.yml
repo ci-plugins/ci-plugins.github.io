@@ -1,5 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy static content to COS
 
 on:
   # Runs on pushes targeting the default branch
@@ -21,17 +20,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v2
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -39,7 +32,7 @@ jobs:
           # extended: true
 
       - name: Build
-        run: rm -rf public.zip public && hugo
+        run: rm -rf public.zip public && hugo && zip public.zip public/
       - name: Upload to COS
         uses: TencentCloud/cos-action@v1
         with:
@@ -51,10 +44,3 @@ jobs:
           remote_path: ./
           clean: true
           accelerate: true
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v1
-      #   with:
-      #     path: './public'
-      # - name: Deploy to GitHub Pages
-      #   id: deployment
-      #   uses: actions/deploy-pages@v1
