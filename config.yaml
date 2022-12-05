@@ -1,4 +1,46 @@
 baseURL: "https://bkci.net"
-languageCode: "en-us"
-title: "BKCI"
+languageCode: "zh-cn"
+title: "蓝鲸持续集成平台"
 theme: hugo-profile
+
+Menus:
+  main:
+    - identifier: document
+      name: 文档中心
+      title: 文档中心
+      url: https://docs.bkci.net
+      weight: 1
+
+    - identifier: bk
+      name: 蓝鲸官网
+      title: 了解更多蓝鲸产品
+      url: https://bk.tencent.com
+      weight: 2
+      
+params:
+  title: "蓝鲸持续集成平台"
+  description: 一个免费开源的持续集成系统
+  favicon: "/logo.png"
+  useBootstrapCDN: false
+  animate: true
+  theme:
+    disableThemeToggle: true
+  color:
+    backgroundColor: #FFFFFF
+
+  hero:
+    enable: true
+    intro: "一个免费并开源的CI服务"
+    title: "蓝鲸持续集成平台"
+    subtitle: "编译/测试/部署 你的代码"
+    content: "BKCI（蓝鲸持续集成平台） 助你自动化构建-测试-发布工作流，持续、快速、高质量地交付你的产品。"
+    image: /logo.png
+    button:
+      enable: true
+      name: "Go to GitHub 👉"
+      url: "https://github.com/Tencent/bk-ci"
+      download: false
+      newPage: true
+
+  footer:
+    recentPosts: false
